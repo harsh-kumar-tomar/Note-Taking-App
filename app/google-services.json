@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "560250118607",
+    "project_id": "forge3-16e37",
+    "storage_bucket": "forge3-16e37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560250118607:android:e15dc9a26fadaaf715b2ba",
+        "android_client_info": {
+          "package_name": "com.example.forge3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-oNTKfRXRTR2fLxIttXENeIv3MWEF7ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
