@@ -66,8 +66,8 @@ class LoginActivity : AppCompatActivity() {
 
                 //adding user ID and user Name to firebase realtime dataBase
                 val firebaseDatabase = FirebaseDatabase.getInstance()
-                val reference = firebaseDatabase.getReference("Users")
-                reference.push().child(account.id.toString()).setValue(account.displayName)
+                val reference = firebaseDatabase.getReference("")
+                reference.child("Users").child(account.id.toString()).setValue(account.displayName)
 
                 //using save preferences
                 val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
