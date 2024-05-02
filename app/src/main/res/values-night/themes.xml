@@ -7,4 +7,11 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+
+
+    <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="fontFamily">@font/instagram_billabong</item>
+    </style>
+
 </resources>

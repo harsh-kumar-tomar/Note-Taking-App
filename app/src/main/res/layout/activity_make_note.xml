@@ -1,61 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MakeNoteActivity"
-    android:background="#FFF495"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/editText"
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_height="match_parent"
+        tools:context=".MakeNoteActivity"
+        android:background="#FFF495">
 
-        android:background="@null"
-        android:fontFamily="@font/futura_medium"
-        android:hint="Note Title"
-        android:includeFontPadding="true"
-        android:inputType="textMultiLine"
-        android:textAlignment="center"
-        android:textColor="#814D01"
-        android:textColorHint="#ECAB4C"
-        android:textSize="@dimen/_30sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--        <com.google.android.material.appbar.MaterialToolbar-->
+<!--            android:id="@+id/materialToolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:title="Edit Note"-->
+<!--            app:titleTextColor="#000"-->
+<!--            app:navigationIcon="@drawable/tick"-->
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:layout_marginRight="@dimen/_5sdp"
-        android:background="@null"
-        android:fontFamily="@font/varela_font"
+<!--            style="@style/Toolbar"-->
+<!--            app:titleCentered="true" />-->
 
-        android:hint="write note here ..."
-        android:inputType="textMultiLine"
+        <EditText
+            android:id="@+id/noteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
 
-        android:textColor="#814D01"
-        android:textColorHint="#ECAB4C"
-        android:textSize="@dimen/_22sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:background="@null"
+            android:fontFamily="@font/instagram_billabong"
+            android:hint="Title"
+            android:includeFontPadding="true"
+            android:inputType="textMultiLine"
+            android:textAlignment="center"
+            android:textColor="#814D01"
+            android:textColorHint="#ECAB4C"
+            android:textSize="@dimen/_30sdp"
+            android:text=""
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/lobster"
-        android:text="19/4/2024"
-        android:textColor="#371717"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/noteDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:background="@null"
+            android:fontFamily="@font/instagram_billabong"
+
+
+            android:hint="write note here ..."
+            android:inputType="textMultiLine"
+
+            android:textColor="#814D01"
+            android:textColorHint="#ECAB4C"
+            android:textSize="@dimen/_32sdp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
+
+        <com.google.android.material.button.MaterialButton
+            android:onClick="Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="save"
+            android:textColor="#fff"
+            android:fontFamily="@font/varela_font"
+            android:backgroundTint="#230808"
+            android:layout_marginTop="@dimen/_50sdp"
+            app:layout_constraintEnd_toEndOf="@+id/noteDescription"
+            app:layout_constraintStart_toStartOf="@+id/noteDescription"
+            app:layout_constraintTop_toBottomOf="@+id/noteDescription" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/lobster"-->
+<!--            android:text="19/4/2024"-->
+<!--            android:textColor="#371717"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/editText2"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/editText" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
