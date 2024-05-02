@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.forge3.databinding.ActivityHomeBinding
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -21,11 +22,12 @@ class HomeActivity : AppCompatActivity() {
     lateinit var binding :ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_home)
+
 
         Thread{
             fetchNoteFromFirebase()
         }.start()
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_home)
 
         //building recyclerView
         binding.recyclerView.apply {
@@ -40,11 +42,18 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //currently working
+        binding.swipeRefreshLayout.setOnRefreshListener {
+//            fetchNoteFromFirebase()
+            binding.swipeRefreshLayout.isRefreshing = false
+
+        }
+
     }
 
     private fun fetchNoteFromFirebase() {
 
-
+        binding.swipeRefreshLayout.isRefreshing = false
         //retrieving userID fro sharedPreferences
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val userId = sharedPreferences.getString("userId", null)
@@ -55,34 +64,32 @@ class HomeActivity : AppCompatActivity() {
 
 
         //filling notes data in noteList
-        reference.addListenerForSingleValueEvent(object : ValueEventListener {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (noteSnapshot in snapshot.children) {
-                    val note = noteSnapshot.getValue(NotesModel::class.java)
-                    note?.let {
-                        noteList.add(it)
-                    }
+        reference.addChildEventListener(object : ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                val note = snapshot.getValue(NotesModel::class.java)
+                note?.let {
+                    noteList.add(it)
+                    binding.recyclerView.adapter?.notifyItemInserted(noteList.size - 1)
                 }
-                binding.recyclerView.adapter?.notifyDataSetChanged()
+            }
 
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(
                     applicationContext,
-                    "no notes available at the moment",
+                    "Failed to retrieve notes: ${error.message}",
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
         })
 
-        @Override
-        fun onResume() {
-            super.onResume();
-            binding.recyclerView.adapter?.notifyDataSetChanged()
-
-        }
     }
 }

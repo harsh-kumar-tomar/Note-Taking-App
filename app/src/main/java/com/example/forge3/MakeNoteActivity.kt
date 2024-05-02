@@ -3,9 +3,14 @@ import com.example.forge3.databinding.ActivityMakeNoteBinding
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.set
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -18,6 +23,17 @@ class MakeNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this , R.layout.activity_make_note)
+
+
+        val  intent = intent
+        val noteTitle = intent.getStringExtra("noteTitle")
+        val noteDescription = intent.getStringExtra("noteDescription")
+
+        if (noteTitle!=null && noteDescription!=null)
+        {
+            binding.noteTitle.setText(noteTitle ,TextView.BufferType.EDITABLE)
+            binding.noteDescription.setText(noteDescription ,TextView.BufferType.EDITABLE)
+        }
 
     }
 
