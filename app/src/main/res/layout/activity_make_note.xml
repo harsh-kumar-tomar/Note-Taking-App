@@ -7,11 +7,16 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MakeNoteActivity"
-        android:background="#FFF495">
+        android:background="#FFF495"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MakeNoteActivity">
 
 <!--        <com.google.android.material.appbar.MaterialToolbar-->
 <!--            android:id="@+id/materialToolbar"-->
@@ -29,21 +34,20 @@
 
         <EditText
             android:id="@+id/noteTitle"
+            style="@style/Title"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
 
             android:background="@null"
-            android:fontFamily="@font/instagram_billabong"
             android:hint="Title"
             android:includeFontPadding="true"
             android:inputType="textMultiLine"
             android:textAlignment="center"
-            android:textColor="#814D01"
-            android:textColorHint="#ECAB4C"
             android:textSize="@dimen/_30sdp"
-            android:text=""
+            android:text="Hi"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,19 +55,17 @@
 
         <EditText
             android:id="@+id/noteDescription"
+            style="@style/Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_5sdp"
             android:background="@null"
-            android:fontFamily="@font/instagram_billabong"
 
 
             android:hint="write note here ..."
             android:inputType="textMultiLine"
 
-            android:textColor="#814D01"
-            android:textColorHint="#ECAB4C"
             android:textSize="@dimen/_32sdp"
             android:text=""
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,4 +97,7 @@
 <!--            app:layout_constraintTop_toBottomOf="@+id/editText" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 </layout>
