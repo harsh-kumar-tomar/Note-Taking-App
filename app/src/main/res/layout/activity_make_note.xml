@@ -10,93 +10,107 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFF495"
-        >
+        android:background="#FFF6AC"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".MakeNoteActivity">
-
-<!--        <com.google.android.material.appbar.MaterialToolbar-->
-<!--            android:id="@+id/materialToolbar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:title="Edit Note"-->
-<!--            app:titleTextColor="#000"-->
-<!--            app:navigationIcon="@drawable/tick"-->
-
-<!--            style="@style/Toolbar"-->
-<!--            app:titleCentered="true" />-->
-
-        <EditText
-            android:id="@+id/noteTitle"
-            style="@style/Title"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
+            tools:context=".MakeNoteActivity">
 
-            android:background="@null"
-            android:hint="Title"
-            android:includeFontPadding="true"
-            android:inputType="textMultiLine"
-            android:textAlignment="center"
-            android:textSize="@dimen/_30sdp"
-            android:text="Hi"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/materimalToolbar"
+                style="@style/Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF389"
+                android:backgroundTint="#FFF389"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/tool_bar"
+                app:navigationIcon="@drawable/check"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                app:titleCentered="true"
+                app:titleTextColor="#000" />
 
-        <EditText
-            android:id="@+id/noteDescription"
-            style="@style/Description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_marginRight="@dimen/_5sdp"
-            android:background="@null"
+            <EditText
+                android:id="@+id/noteTitle"
+                style="@style/Title"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="Diary"
+                android:fontFamily="@font/varela_font"
+                android:includeFontPadding="true"
+                android:inputType="textMultiLine"
+                android:textAlignment="center"
+                android:maxLines="1"
+                android:maxLength="10"
+
+                android:textSize="@dimen/_30sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.692"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-            android:hint="write note here ..."
-            android:inputType="textMultiLine"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01.08, 10:20AM"
+                android:textStyle="bold"
+                android:textColor="#424242"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:fontFamily="@font/nunito_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materimalToolbar" />
 
-            android:textSize="@dimen/_32sdp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
+            <EditText
+                android:id="@+id/noteDescription"
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:background="@null"
 
-        <com.google.android.material.button.MaterialButton
-            android:onClick="Save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="save"
-            android:textColor="#fff"
-            android:fontFamily="@font/varela_font"
-            android:backgroundTint="#230808"
-            android:layout_marginTop="@dimen/_50sdp"
-            app:layout_constraintEnd_toEndOf="@+id/noteDescription"
-            app:layout_constraintStart_toStartOf="@+id/noteDescription"
-            app:layout_constraintTop_toBottomOf="@+id/noteDescription" />
+                android:hint="note here ..."
+                android:inputType="textMultiLine"
+                android:text=""
+                android:textSize="@dimen/_18sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/textView"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/lobster"-->
-<!--            android:text="19/4/2024"-->
-<!--            android:textColor="#371717"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/editText2"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/editText" />-->
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/_50sdp"-->
+<!--                android:backgroundTint="#230808"-->
+<!--                android:fontFamily="@font/varela_font"-->
+<!--                android:onClick="Save"-->
+<!--                android:text="save"-->
+<!--                android:textColor="#fff"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/noteDescription"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/noteDescription"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/noteDescription" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--        <TextView-->
+            <!--            android:id="@+id/textView"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:fontFamily="@font/lobster"-->
+            <!--            android:text="19/4/2024"-->
+            <!--            android:textColor="#371717"-->
+            <!--            app:layout_constraintStart_toStartOf="@+id/editText2"-->
+            <!--            app:layout_constraintTop_toBottomOf="@+id/editText" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </ScrollView>
