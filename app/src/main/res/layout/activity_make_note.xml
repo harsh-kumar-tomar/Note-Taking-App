@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <data>
 
@@ -11,53 +11,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFF6AC"
+        android:theme="@style/YellowTheme"
         android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".MakeNoteActivity">
+            tools:context=".Activity.MakeNoteActivity">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/materimalToolbar"
-                style="@style/Toolbar"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/materialToolbar"
+                style="@style/ToolbarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFF389"
-                android:backgroundTint="#FFF389"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:menu="@menu/tool_bar"
                 app:navigationIcon="@drawable/check"
-
-                app:titleCentered="true"
-                app:titleTextColor="#000" />
+                />
 
             <EditText
                 android:id="@+id/noteTitle"
-                style="@style/Title"
-
+                style="@style/TitleTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
                 android:hint="Diary"
-                android:fontFamily="@font/varela_font"
+                android:textSize="@dimen/_30sdp"
                 android:includeFontPadding="true"
                 android:inputType="textMultiLine"
-                android:textAlignment="center"
-                android:maxLines="1"
-                android:maxLength="10"
-
-                android:textSize="@dimen/_30sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.692"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/dateTime" />
 
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/dateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="01.08, 10:20AM"
@@ -67,11 +57,11 @@
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:fontFamily="@font/nunito_regular"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materimalToolbar" />
+                app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
 
             <EditText
                 android:id="@+id/noteDescription"
-                style="@style/Description"
+                style="@style/DescriptionTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/_10sdp"
@@ -79,7 +69,6 @@
                 android:background="@null"
 
                 android:hint="note here ..."
-                android:inputType="textMultiLine"
                 android:text=""
                 android:textSize="@dimen/_18sdp"
                 app:layout_constraintEnd_toEndOf="parent"

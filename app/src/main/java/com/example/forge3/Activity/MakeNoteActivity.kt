@@ -1,19 +1,20 @@
-package com.example.forge3
+package com.example.forge3.Activity
+import android.content.ClipDescription
 import com.example.forge3.databinding.ActivityMakeNoteBinding
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.set
 import androidx.databinding.DataBindingUtil
+import com.example.forge3.Model.NotesModel
+import com.example.forge3.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
 class MakeNoteActivity : AppCompatActivity() {
@@ -29,16 +30,31 @@ class MakeNoteActivity : AppCompatActivity() {
         val noteTitle = intent.getStringExtra("noteTitle")
         val noteDescription = intent.getStringExtra("noteDescription")
 
+        //intent opening a note
         if (noteTitle!=null && noteDescription!=null)
         {
             binding.noteTitle.setText(noteTitle ,TextView.BufferType.EDITABLE)
             binding.noteDescription.setText(noteDescription ,TextView.BufferType.EDITABLE)
         }
 
+
+        binding.materialToolbar.setNavigationOnClickListener {
+            save()
+        }
+
+        //setting date and time
+        val currentDateTime = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("dd.MM, hh:mma", Locale.getDefault())
+        val formattedDateTime = dateFormat.format(currentDateTime)
+        binding.dateTime.text = formattedDateTime
+
+
     }
 
+//    fun save(title:String , description:String)
+
     //save btn onclick
-    fun Save(view: View) {
+    fun save() {
         if (binding.noteTitle.toString().isEmpty()) {
             Toast.makeText(applicationContext, "Empty Title", Toast.LENGTH_SHORT).show()
             return
@@ -69,7 +85,6 @@ class MakeNoteActivity : AppCompatActivity() {
             Toast.makeText(applicationContext,"Note Saved",Toast.LENGTH_SHORT).show()
         }.addOnCanceledListener {
             Toast.makeText(applicationContext,"Unable to save your note",Toast.LENGTH_SHORT).show()
-
         }
 
 

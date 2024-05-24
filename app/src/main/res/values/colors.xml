@@ -3,6 +3,22 @@
     <color name="black">#403B36</color>
     <color name="light_black">#595550</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="app_theme_color">#E5E5E5</color>
+    <color name="app_theme_color">#F8EEE2</color>
+
+
+    <color name="Yellow">#FFF6AC</color>
+    <color name="Yellow_Dark">#FFF280</color>
+
+    <color name="Purple">#9290C3</color>
+    <color name="Purple_Dark">#1B1A55</color>
+
+    <color name="Green">#93B1A6</color>
+    <color name="Green_Dark">#183D3D</color>
+
+    <color name="Pink">#E95793</color>
+    <color name="Pink_Dark">#DA0C81</color>
+
+
+
 
 </resources>

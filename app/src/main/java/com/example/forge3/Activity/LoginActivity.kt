@@ -1,6 +1,5 @@
-package com.example.forge3
+package com.example.forge3.Activity
 
-import android.R.attr
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,13 +7,15 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.forge3.Model.UserSettingModel
+import com.example.forge3.R
 import com.example.forge3.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class LoginActivity : AppCompatActivity() {
@@ -23,7 +24,9 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding : ActivityLoginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login)
+        val binding : ActivityLoginBinding = DataBindingUtil.setContentView(this,
+            R.layout.activity_login
+        )
 
         //adding google sign in
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -72,6 +75,21 @@ class LoginActivity : AppCompatActivity() {
                 //using save preferences
                 val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
                 sharedPreferences.edit().putString("userId", account.id).apply()
+
+
+                //saving data to firestore
+                val db = FirebaseFirestore.getInstance()
+
+                val userNotesRef = db.collection("Users").document(account.id!!)
+
+                val userSettingModel = UserSettingModel(account.id.toString() , account.displayName.toString() , account.email.toString() , account.photoUrl.toString())
+
+                userNotesRef.set(userSettingModel).addOnSuccessListener {
+                    Toast.makeText(applicationContext, "Details Saved", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(applicationContext, "Unable to  save your details", Toast.LENGTH_SHORT).show()
+                }
+
 
                 //starting new activity
                 val intent = Intent(applicationContext , HomeActivity::class.java)

@@ -7,15 +7,15 @@
 
     <androidx.cardview.widget.CardView
         android:padding="@dimen/_30sdp"
-        android:layout_margin="20dp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginBottom="@dimen/_2sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="@dimen/_30sdp"
-
-
-
-        android:backgroundTint="#FFFAC9"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:backgroundTint="#FFF6AC"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +30,7 @@
 
             <TextView
                 android:id="@+id/noteTitleModel"
+                style="@style/TitleTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -37,23 +38,25 @@
 
 
                 android:layout_alignParentEnd="true"
-                android:fontFamily="@font/instagram_billabong"
+                android:maxLines="1"
                 android:text="Note Title"
-                android:textAlignment="center"
-                android:textColor="#673AB7"
-                android:textSize="@dimen/_30sdp" />
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_22sdp" />
 
             <TextView
                 android:id="@+id/noteDescriptionModel"
+                style="@style/DescriptionTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:layout_below="@+id/noteTitleModel"
 
-                android:fontFamily="@font/instagram_billabong"
                 android:text="Notes ..."
-                android:textColor="#E91E63"
-                android:textSize="@dimen/_22sdp" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/_22sdp"
+                android:maxLines="3"
+                />
 
 
         </RelativeLayout>
